@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event Cart</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section id="login-view" class="login-layout">
+        <div class="brand-panel">
+          <p class="eyebrow">EVENT CART</p>
+          <h1>Shop with a little more signal.</h1>
+          <p class="muted">A compact e-commerce demo powered by events, services, and real-time order updates.</p>
+          <div class="event-path" aria-label="Event flow">
+            <span>Order</span><b>→</b><span>Inventory</span><b>→</b><span>Payment</span><b>→</b><span>Confirmed</span>
+          </div>
+        </div>
+        <form id="login-form" class="panel login-card">
+          <p class="eyebrow">WELCOME BACK</p>
+          <h2>Sign in to your shop</h2>
+          <p class="muted">Use one of the seeded demo accounts.</p>
+          <label>Username<input name="username" value="user1" autocomplete="username" required></label>
+          <label>Password<input name="password" type="password" value="0000" autocomplete="current-password" required></label>
+          <button class="primary" type="submit">Enter the store</button>
+          <p id="login-error" class="error" role="alert"></p>
+        </form>
+      </section>
+
+      <section id="store-view" hidden>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">EVENT CART</p>
+            <h1>Your store</h1>
+          </div>
+          <div class="account-actions">
+            <span id="welcome"></span>
+            <button id="logout-button" class="ghost" type="button">Sign out</button>
+          </div>
+        </header>
+
+        <nav class="tab-nav" aria-label="Store sections">
+          <button class="tab-button active" data-view="dashboard" type="button">Dashboard</button>
+          <button class="tab-button" data-view="orders" type="button">Orders <span id="order-count">—</span></button>
+        </nav>
+
+        <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+        <section class="summary-grid">
+          <article class="panel summary-card">
+            <span class="label">Wallet balance</span>
+            <strong id="wallet-balance">—</strong>
+            <span class="hint">Available for checkout</span>
+          </article>
+          <article class="panel summary-card">
+            <span class="label">Orders</span>
+            <strong id="order-count-summary">—</strong>
+            <span class="hint">Live from the order service</span>
+          </article>
+          <article class="panel summary-card status-card">
+            <span class="label">Event stream</span>
+            <strong id="connection-status">Connecting…</strong>
+            <span class="hint">Socket.IO notifications</span>
+          </article>
+        </section>
+
+        <section id="dashboard-view" class="content-grid view-panel">
+          <section class="panel catalog-panel">
+            <div class="section-heading">
+              <div><p class="eyebrow">CATALOGUE</p><h2>Available products</h2></div>
+              <button id="refresh-button" class="ghost" type="button">Refresh</button>
+            </div>
+            <div id="products" class="product-grid"></div>
+          </section>
+
+          <aside class="panel order-panel">
+            <p class="eyebrow">CHECKOUT</p>
+            <h2>Place an order</h2>
+            <form id="order-form">
+              <label>Product<select id="product-select" name="productId" required></select></label>
+              <label>Quantity<input id="quantity" name="quantity" type="number" min="1" max="50" value="1" required></label>
+              <div class="order-total"><span>Total</span><strong id="order-total">—</strong></div>
+              <button class="primary" type="submit">Continue to payment</button>
+              <p id="order-message" class="message" role="status"></p>
+            </form>
+          </aside>
+        </section>
+
+        <section id="orders-view" class="panel orders-panel view-panel" hidden>
+          <div class="section-heading">
+            <div><p class="eyebrow">ACTIVITY</p><h2>Recent orders</h2></div>
+            <span class="hint">Latest orders appear here after payment</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Order</th><th>Item</th><th>Quantity</th><th>Total</th><th>Status</th><th>Created</th></tr></thead>
+              <tbody id="orders"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="https://cdn.socket.io/4.8.4/socket.io.min.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

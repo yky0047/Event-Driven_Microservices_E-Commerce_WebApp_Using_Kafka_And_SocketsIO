@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment · Event Cart</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <main class="shell payment-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">EVENT CART</p>
+          <h1>Secure payment</h1>
+        </div>
+        <a class="ghost back-link" href="/">Back to dashboard</a>
+      </header>
+
+      <section class="payment-layout">
+        <div class="panel payment-card">
+          <p class="eyebrow">ORDER SUMMARY</p>
+          <h2>Review your order</h2>
+          <div class="payment-summary">
+            <div><span>Product</span><strong id="payment-product">—</strong></div>
+            <div><span>Quantity</span><strong id="payment-quantity">—</strong></div>
+            <div><span>Payment method</span><strong>Wallet balance</strong></div>
+            <div class="payment-total"><span>Total</span><strong id="payment-total">—</strong></div>
+          </div>
+          <p id="payment-error" class="error" role="alert"></p>
+          <button id="pay-button" class="primary" type="button">Pay now</button>
+        </div>
+
+        <div id="payment-state" class="panel payment-state" aria-live="polite">
+          <div id="payment-orbit" class="payment-orbit"><span></span></div>
+          <p id="payment-state-label" class="eyebrow">READY TO PAY</p>
+          <h2 id="payment-state-title">Your payment is waiting</h2>
+          <p id="payment-state-copy" class="muted">Your wallet will be debited only after you confirm payment.</p>
+          <a id="return-button" class="primary return-button" href="/?view=orders" hidden>Return to orders</a>
+        </div>
+      </section>
+    </main>
+    <script src="/js/payment.js"></script>
+  </body>
+</html>
