@@ -283,6 +283,3 @@ scripts/
 
 This is an educational local project. The payment system uses an internal wallet rather than a real payment provider. It is not intended for production use and does not include production HTTPS, external payment processing, advanced authorization, or deployment infrastructure.
 
-## Viva Summary
-
-Event Cart demonstrates database-per-service ownership, normalized relational data, SQL transactions, row locking, idempotency, eventual consistency, Kafka event communication, API Gateway routing, JWT authentication, and Socket.IO notifications in one complete e-commerce workflow.
